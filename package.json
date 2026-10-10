@@ -1,0 +1,13 @@
+{
+  "name": "meal-recommender",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev": "npm run dev -w apps/web",
+    "build": "npm run build -w apps/web",
+    "start": "npm run start -w apps/web",
+    "test": "npm test -w packages/core",
+    "typecheck": "tsc -p packages/core --noEmit && tsc -p apps/web --noEmit",
+    "check": "npm run typecheck && npm test"
+  }
+}

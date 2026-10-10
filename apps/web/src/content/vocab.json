@@ -1,0 +1,477 @@
+{
+ "categories": [
+  {
+   "id": "vegetables",
+   "label": "Vegetables"
+  },
+  {
+   "id": "dairy",
+   "label": "Eggs and dairy"
+  },
+  {
+   "id": "grains",
+   "label": "Grains and pulses"
+  },
+  {
+   "id": "staples",
+   "label": "Spices and staples"
+  }
+ ],
+ "tags": [
+  {
+   "id": "north-indian",
+   "label": "North Indian",
+   "kind": "cuisine",
+   "chip": false
+  },
+  {
+   "id": "south-indian",
+   "label": "South Indian",
+   "kind": "cuisine",
+   "chip": false
+  },
+  {
+   "id": "indo-chinese",
+   "label": "Indo-Chinese",
+   "kind": "cuisine",
+   "chip": false
+  },
+  {
+   "id": "continental",
+   "label": "Continental",
+   "kind": "cuisine",
+   "chip": false
+  },
+  {
+   "id": "street",
+   "label": "Street food",
+   "kind": "cuisine",
+   "chip": false
+  },
+  {
+   "id": "dosa",
+   "label": "Dosa",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "idli",
+   "label": "Idli",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "poha-dish",
+   "label": "Poha",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "paratha",
+   "label": "Paratha",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "khichdi",
+   "label": "Khichdi",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "dal",
+   "label": "Dal",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "rajma",
+   "label": "Rajma",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "chole",
+   "label": "Chole",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "paneer",
+   "label": "Paneer",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "egg",
+   "label": "Egg dishes",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "spicy-gravy",
+   "label": "Spicy gravy",
+   "kind": "trait",
+   "chip": true
+  },
+  {
+   "id": "deep-fried",
+   "label": "Deep fried",
+   "kind": "trait",
+   "chip": true
+  },
+  {
+   "id": "light-sabzi",
+   "label": "Light sabzi",
+   "kind": "trait",
+   "chip": true
+  },
+  {
+   "id": "biryani",
+   "label": "Biryani",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "pasta",
+   "label": "Pasta",
+   "kind": "dish",
+   "chip": true
+  },
+  {
+   "id": "spinach",
+   "label": "Spinach",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "lauki",
+   "label": "Lauki",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "karela",
+   "label": "Karela",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "potato",
+   "label": "Potato",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "capsicum",
+   "label": "Capsicum",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "cauliflower",
+   "label": "Cauliflower",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "bhindi",
+   "label": "Bhindi",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "mushroom",
+   "label": "Mushroom",
+   "kind": "ingredient",
+   "chip": true
+  },
+  {
+   "id": "peas",
+   "label": "Peas",
+   "kind": "ingredient",
+   "chip": false
+  },
+  {
+   "id": "tomato",
+   "label": "Tomato",
+   "kind": "ingredient",
+   "chip": false
+  },
+  {
+   "id": "high-protein",
+   "label": "High protein",
+   "kind": "trait",
+   "chip": false
+  },
+  {
+   "id": "comfort",
+   "label": "Comfort food",
+   "kind": "trait",
+   "chip": false
+  },
+  {
+   "id": "rice-dish",
+   "label": "Rice dish",
+   "kind": "trait",
+   "chip": false
+  }
+ ],
+ "ingredients": [
+  {
+   "id": "tomato",
+   "label": "Tomato",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "tomato"
+  },
+  {
+   "id": "onion",
+   "label": "Onion",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "potato",
+   "label": "Potato",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "potato"
+  },
+  {
+   "id": "spinach",
+   "label": "Spinach",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "spinach"
+  },
+  {
+   "id": "cauliflower",
+   "label": "Cauliflower",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "cauliflower"
+  },
+  {
+   "id": "peas",
+   "label": "Peas",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "peas"
+  },
+  {
+   "id": "capsicum",
+   "label": "Capsicum",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "capsicum"
+  },
+  {
+   "id": "lauki",
+   "label": "Lauki",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "lauki"
+  },
+  {
+   "id": "karela",
+   "label": "Karela",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "karela"
+  },
+  {
+   "id": "carrot",
+   "label": "Carrot",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "bhindi",
+   "label": "Bhindi",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "bhindi"
+  },
+  {
+   "id": "mushroom",
+   "label": "Mushroom",
+   "category": "vegetables",
+   "unit": "g",
+   "pantry": true,
+   "tag": "mushroom"
+  },
+  {
+   "id": "eggs",
+   "label": "Eggs",
+   "category": "dairy",
+   "unit": "pcs",
+   "pantry": true,
+   "tag": "egg"
+  },
+  {
+   "id": "paneer",
+   "label": "Paneer",
+   "category": "dairy",
+   "unit": "g",
+   "pantry": true,
+   "tag": "paneer"
+  },
+  {
+   "id": "curd",
+   "label": "Curd",
+   "category": "dairy",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "milk",
+   "label": "Milk",
+   "category": "dairy",
+   "unit": "ml",
+   "pantry": true
+  },
+  {
+   "id": "butter",
+   "label": "Butter",
+   "category": "dairy",
+   "unit": "g",
+   "pantry": false
+  },
+  {
+   "id": "rice",
+   "label": "Rice",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "atta",
+   "label": "Atta",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "poha",
+   "label": "Poha",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "rajma",
+   "label": "Rajma",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true,
+   "tag": "rajma"
+  },
+  {
+   "id": "chana",
+   "label": "Chana",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true,
+   "tag": "chole"
+  },
+  {
+   "id": "moong-dal",
+   "label": "Moong dal",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true,
+   "tag": "dal"
+  },
+  {
+   "id": "toor-dal",
+   "label": "Toor dal",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true,
+   "tag": "dal"
+  },
+  {
+   "id": "suji",
+   "label": "Suji",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "dosa-batter",
+   "label": "Dosa batter",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "bread",
+   "label": "Bread",
+   "category": "grains",
+   "unit": "pcs",
+   "pantry": true
+  },
+  {
+   "id": "makhana",
+   "label": "Makhana",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "besan",
+   "label": "Besan",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "oats",
+   "label": "Oats",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "pasta",
+   "label": "Pasta",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true,
+   "tag": "pasta"
+  },
+  {
+   "id": "noodles",
+   "label": "Noodles",
+   "category": "grains",
+   "unit": "g",
+   "pantry": true
+  },
+  {
+   "id": "oil",
+   "label": "Cooking oil",
+   "category": "staples",
+   "unit": "ml",
+   "pantry": false
+  },
+  {
+   "id": "peanuts",
+   "label": "Peanuts",
+   "category": "staples",
+   "unit": "g",
+   "pantry": true
+  }
+ ]
+}

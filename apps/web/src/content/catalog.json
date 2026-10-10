@@ -1,0 +1,1266 @@
+[
+ {
+  "id": "vegetable-poha",
+  "name": "Vegetable poha",
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "diet": "veg",
+  "minutes": 20,
+  "kcal": 280,
+  "spice": 1,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [
+   "poha-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "poha",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "peas",
+    "qtyPerServing": 20
+   },
+   {
+    "id": "peanuts",
+    "qtyPerServing": 10
+   },
+   {
+    "id": "potato",
+    "qtyPerServing": 40
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "masala-dosa",
+  "name": "Masala dosa with chutney",
+  "slots": [
+   "breakfast",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 30,
+  "kcal": 420,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "south-indian",
+  "tags": [
+   "dosa"
+  ],
+  "ingredients": [
+   {
+    "id": "dosa-batter",
+    "qtyPerServing": 150
+   },
+   {
+    "id": "potato",
+    "qtyPerServing": 100
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "idli-sambar",
+  "name": "Idli sambar",
+  "slots": [
+   "breakfast"
+  ],
+  "diet": "veg",
+  "minutes": 25,
+  "kcal": 330,
+  "spice": 1,
+  "heaviness": "light",
+  "cuisine": "south-indian",
+  "tags": [
+   "idli",
+   "dal"
+  ],
+  "ingredients": [
+   {
+    "id": "dosa-batter",
+    "qtyPerServing": 150
+   },
+   {
+    "id": "toor-dal",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 40
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "aloo-paratha",
+  "name": "Aloo paratha with curd",
+  "slots": [
+   "breakfast",
+   "lunch"
+  ],
+  "diet": "veg",
+  "minutes": 35,
+  "kcal": 480,
+  "spice": 1,
+  "heaviness": "heavy",
+  "cuisine": "north-indian",
+  "tags": [
+   "paratha"
+  ],
+  "ingredients": [
+   {
+    "id": "atta",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "potato",
+    "qtyPerServing": 120
+   },
+   {
+    "id": "curd",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "butter",
+    "qtyPerServing": 10
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "egg-bhurji-toast",
+  "name": "Egg bhurji with toast",
+  "slots": [
+   "breakfast"
+  ],
+  "diet": "egg",
+  "minutes": 15,
+  "kcal": 350,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "street",
+  "tags": [
+   "egg",
+   "high-protein"
+  ],
+  "ingredients": [
+   {
+    "id": "eggs",
+    "qtyPerServing": 2
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "bread",
+    "qtyPerServing": 2
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "masala-omelette",
+  "name": "Masala omelette",
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "diet": "egg",
+  "minutes": 10,
+  "kcal": 260,
+  "spice": 1,
+  "heaviness": "light",
+  "cuisine": "street",
+  "tags": [
+   "egg",
+   "high-protein"
+  ],
+  "ingredients": [
+   {
+    "id": "eggs",
+    "qtyPerServing": 2
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "capsicum",
+    "qtyPerServing": 20
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "besan-chilla",
+  "name": "Besan chilla",
+  "slots": [
+   "breakfast",
+   "snack"
+  ],
+  "diet": "veg",
+  "minutes": 20,
+  "kcal": 250,
+  "spice": 1,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [
+   "high-protein"
+  ],
+  "ingredients": [
+   {
+    "id": "besan",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "upma",
+  "name": "Vegetable upma",
+  "slots": [
+   "breakfast"
+  ],
+  "diet": "veg",
+  "minutes": 20,
+  "kcal": 290,
+  "spice": 0,
+  "heaviness": "light",
+  "cuisine": "south-indian",
+  "tags": [],
+  "ingredients": [
+   {
+    "id": "suji",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "carrot",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "peas",
+    "qtyPerServing": 20
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "masala-oats",
+  "name": "Masala oats",
+  "slots": [
+   "breakfast"
+  ],
+  "diet": "veg",
+  "minutes": 15,
+  "kcal": 220,
+  "spice": 1,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [],
+  "ingredients": [
+   {
+    "id": "oats",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 20
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "carrot",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "paneer-paratha",
+  "name": "Paneer paratha",
+  "slots": [
+   "breakfast",
+   "lunch"
+  ],
+  "diet": "veg",
+  "minutes": 35,
+  "kcal": 520,
+  "spice": 1,
+  "heaviness": "heavy",
+  "cuisine": "north-indian",
+  "tags": [
+   "paratha",
+   "paneer"
+  ],
+  "ingredients": [
+   {
+    "id": "atta",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "paneer",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "butter",
+    "qtyPerServing": 10
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "rajma-chawal",
+  "name": "Rajma chawal",
+  "slots": [
+   "lunch"
+  ],
+  "diet": "veg",
+  "minutes": 45,
+  "kcal": 520,
+  "spice": 2,
+  "heaviness": "heavy",
+  "cuisine": "north-indian",
+  "tags": [
+   "rajma",
+   "high-protein",
+   "comfort",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "rajma",
+    "qtyPerServing": 70
+   },
+   {
+    "id": "rice",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 60
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "chole-jeera-rice",
+  "name": "Chole with jeera rice",
+  "slots": [
+   "lunch"
+  ],
+  "diet": "veg",
+  "minutes": 40,
+  "kcal": 510,
+  "spice": 2,
+  "heaviness": "heavy",
+  "cuisine": "north-indian",
+  "tags": [
+   "chole",
+   "high-protein",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "chana",
+    "qtyPerServing": 70
+   },
+   {
+    "id": "rice",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 60
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "dal-tadka-rice",
+  "name": "Dal tadka with rice",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 30,
+  "kcal": 430,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "north-indian",
+  "tags": [
+   "dal",
+   "comfort",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "toor-dal",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "rice",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 40
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "moong-khichdi",
+  "name": "Mixed dal khichdi",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 30,
+  "kcal": 400,
+  "spice": 0,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [
+   "khichdi",
+   "dal",
+   "comfort",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "moong-dal",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "rice",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "carrot",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "peas",
+    "qtyPerServing": 20
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "palak-paneer-roti",
+  "name": "Palak paneer with roti",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 40,
+  "kcal": 500,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "north-indian",
+  "tags": [
+   "paneer"
+  ],
+  "ingredients": [
+   {
+    "id": "spinach",
+    "qtyPerServing": 150
+   },
+   {
+    "id": "paneer",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 70
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "paneer-butter-masala",
+  "name": "Paneer butter masala with naan",
+  "slots": [
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 45,
+  "kcal": 620,
+  "spice": 1,
+  "heaviness": "heavy",
+  "cuisine": "north-indian",
+  "tags": [
+   "paneer",
+   "comfort"
+  ],
+  "ingredients": [
+   {
+    "id": "paneer",
+    "qtyPerServing": 100
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 100
+   },
+   {
+    "id": "butter",
+    "qtyPerServing": 15
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 80
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "egg-curry-jeera-rice",
+  "name": "Egg curry with jeera rice",
+  "slots": [
+   "dinner",
+   "lunch"
+  ],
+  "diet": "egg",
+  "minutes": 40,
+  "kcal": 540,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "north-indian",
+  "tags": [
+   "egg",
+   "high-protein",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "eggs",
+    "qtyPerServing": 2
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "rice",
+    "qtyPerServing": 80
+   }
+  ],
+  "staple": true
+ },
+ {
+  "id": "aloo-gobi-roti",
+  "name": "Aloo gobi with roti and dal",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 35,
+  "kcal": 450,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "north-indian",
+  "tags": [
+   "light-sabzi",
+   "dal"
+  ],
+  "ingredients": [
+   {
+    "id": "cauliflower",
+    "qtyPerServing": 120
+   },
+   {
+    "id": "potato",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 70
+   },
+   {
+    "id": "moong-dal",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "lauki-chana-dal",
+  "name": "Lauki chana dal with roti",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 35,
+  "kcal": 380,
+  "spice": 1,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [
+   "light-sabzi",
+   "dal"
+  ],
+  "ingredients": [
+   {
+    "id": "lauki",
+    "qtyPerServing": 150
+   },
+   {
+    "id": "chana",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 70
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "bhindi-masala-roti",
+  "name": "Bhindi masala with roti and dal",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 35,
+  "kcal": 420,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "north-indian",
+  "tags": [
+   "light-sabzi"
+  ],
+  "ingredients": [
+   {
+    "id": "bhindi",
+    "qtyPerServing": 150
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 70
+   },
+   {
+    "id": "toor-dal",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "karela-sabzi",
+  "name": "Stuffed karela with roti",
+  "slots": [
+   "lunch"
+  ],
+  "diet": "veg",
+  "minutes": 40,
+  "kcal": 360,
+  "spice": 2,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [
+   "light-sabzi"
+  ],
+  "ingredients": [
+   {
+    "id": "karela",
+    "qtyPerServing": 150
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 70
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "veg-biryani",
+  "name": "Vegetable biryani with raita",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 50,
+  "kcal": 540,
+  "spice": 2,
+  "heaviness": "heavy",
+  "cuisine": "north-indian",
+  "tags": [
+   "biryani",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "rice",
+    "qtyPerServing": 90
+   },
+   {
+    "id": "carrot",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "peas",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "potato",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "curd",
+    "qtyPerServing": 80
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "egg-biryani",
+  "name": "Egg biryani with raita",
+  "slots": [
+   "dinner"
+  ],
+  "diet": "egg",
+  "minutes": 50,
+  "kcal": 600,
+  "spice": 2,
+  "heaviness": "heavy",
+  "cuisine": "north-indian",
+  "tags": [
+   "biryani",
+   "egg",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "rice",
+    "qtyPerServing": 90
+   },
+   {
+    "id": "eggs",
+    "qtyPerServing": 2
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "curd",
+    "qtyPerServing": 80
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "veg-hakka-noodles",
+  "name": "Veg hakka noodles",
+  "slots": [
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 25,
+  "kcal": 450,
+  "spice": 2,
+  "heaviness": "medium",
+  "cuisine": "indo-chinese",
+  "tags": [],
+  "ingredients": [
+   {
+    "id": "noodles",
+    "qtyPerServing": 80
+   },
+   {
+    "id": "capsicum",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "carrot",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "mushroom-matar",
+  "name": "Mushroom matar with roti",
+  "slots": [
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 35,
+  "kcal": 430,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "north-indian",
+  "tags": [
+   "light-sabzi"
+  ],
+  "ingredients": [
+   {
+    "id": "mushroom",
+    "qtyPerServing": 120
+   },
+   {
+    "id": "peas",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 70
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "pasta-arrabbiata",
+  "name": "Veg pasta in tomato sauce",
+  "slots": [
+   "dinner",
+   "lunch"
+  ],
+  "diet": "veg",
+  "minutes": 25,
+  "kcal": 480,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "continental",
+  "tags": [
+   "pasta"
+  ],
+  "ingredients": [
+   {
+    "id": "pasta",
+    "qtyPerServing": 90
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 120
+   },
+   {
+    "id": "capsicum",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "chole-bhature",
+  "name": "Chole bhature",
+  "slots": [
+   "lunch"
+  ],
+  "diet": "veg",
+  "minutes": 50,
+  "kcal": 750,
+  "spice": 2,
+  "heaviness": "heavy",
+  "cuisine": "street",
+  "tags": [
+   "chole",
+   "deep-fried"
+  ],
+  "ingredients": [
+   {
+    "id": "chana",
+    "qtyPerServing": 70
+   },
+   {
+    "id": "atta",
+    "qtyPerServing": 100
+   },
+   {
+    "id": "oil",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 40
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "pav-bhaji",
+  "name": "Pav bhaji",
+  "slots": [
+   "dinner",
+   "snack"
+  ],
+  "diet": "veg",
+  "minutes": 40,
+  "kcal": 560,
+  "spice": 2,
+  "heaviness": "heavy",
+  "cuisine": "street",
+  "tags": [
+   "spicy-gravy"
+  ],
+  "ingredients": [
+   {
+    "id": "potato",
+    "qtyPerServing": 100
+   },
+   {
+    "id": "cauliflower",
+    "qtyPerServing": 60
+   },
+   {
+    "id": "peas",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "capsicum",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "bread",
+    "qtyPerServing": 3
+   },
+   {
+    "id": "butter",
+    "qtyPerServing": 15
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "paneer-tikka",
+  "name": "Paneer tikka",
+  "slots": [
+   "snack",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 30,
+  "kcal": 380,
+  "spice": 2,
+  "heaviness": "medium",
+  "cuisine": "north-indian",
+  "tags": [
+   "paneer",
+   "high-protein"
+  ],
+  "ingredients": [
+   {
+    "id": "paneer",
+    "qtyPerServing": 100
+   },
+   {
+    "id": "capsicum",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "onion",
+    "qtyPerServing": 40
+   },
+   {
+    "id": "curd",
+    "qtyPerServing": 40
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "roasted-makhana",
+  "name": "Roasted makhana",
+  "slots": [
+   "snack"
+  ],
+  "diet": "veg",
+  "minutes": 10,
+  "kcal": 120,
+  "spice": 0,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [],
+  "ingredients": [
+   {
+    "id": "makhana",
+    "qtyPerServing": 25
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "egg-sandwich",
+  "name": "Egg sandwich",
+  "slots": [
+   "snack",
+   "breakfast"
+  ],
+  "diet": "egg",
+  "minutes": 15,
+  "kcal": 320,
+  "spice": 0,
+  "heaviness": "light",
+  "cuisine": "continental",
+  "tags": [
+   "egg"
+  ],
+  "ingredients": [
+   {
+    "id": "eggs",
+    "qtyPerServing": 1
+   },
+   {
+    "id": "bread",
+    "qtyPerServing": 2
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "aloo-tikki",
+  "name": "Aloo tikki chaat",
+  "slots": [
+   "snack"
+  ],
+  "diet": "veg",
+  "minutes": 30,
+  "kcal": 340,
+  "spice": 2,
+  "heaviness": "medium",
+  "cuisine": "street",
+  "tags": [
+   "deep-fried",
+   "potato"
+  ],
+  "ingredients": [
+   {
+    "id": "potato",
+    "qtyPerServing": 120
+   },
+   {
+    "id": "curd",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "oil",
+    "qtyPerServing": 20
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "spinach-dal-rice",
+  "name": "Dal palak with rice",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 30,
+  "kcal": 420,
+  "spice": 1,
+  "heaviness": "light",
+  "cuisine": "north-indian",
+  "tags": [
+   "dal",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "spinach",
+    "qtyPerServing": 100
+   },
+   {
+    "id": "toor-dal",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "rice",
+    "qtyPerServing": 70
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "curd-rice",
+  "name": "Curd rice",
+  "slots": [
+   "lunch",
+   "dinner"
+  ],
+  "diet": "veg",
+  "minutes": 15,
+  "kcal": 350,
+  "spice": 0,
+  "heaviness": "light",
+  "cuisine": "south-indian",
+  "tags": [
+   "comfort",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "rice",
+    "qtyPerServing": 70
+   },
+   {
+    "id": "curd",
+    "qtyPerServing": 150
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "egg-fried-rice",
+  "name": "Egg fried rice",
+  "slots": [
+   "dinner",
+   "lunch"
+  ],
+  "diet": "egg",
+  "minutes": 25,
+  "kcal": 480,
+  "spice": 1,
+  "heaviness": "medium",
+  "cuisine": "indo-chinese",
+  "tags": [
+   "egg",
+   "rice-dish"
+  ],
+  "ingredients": [
+   {
+    "id": "rice",
+    "qtyPerServing": 90
+   },
+   {
+    "id": "eggs",
+    "qtyPerServing": 2
+   },
+   {
+    "id": "carrot",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "capsicum",
+    "qtyPerServing": 30
+   }
+  ],
+  "staple": false
+ },
+ {
+  "id": "vegetable-sandwich",
+  "name": "Grilled vegetable sandwich",
+  "slots": [
+   "snack",
+   "breakfast"
+  ],
+  "diet": "veg",
+  "minutes": 15,
+  "kcal": 300,
+  "spice": 0,
+  "heaviness": "light",
+  "cuisine": "continental",
+  "tags": [],
+  "ingredients": [
+   {
+    "id": "bread",
+    "qtyPerServing": 2
+   },
+   {
+    "id": "tomato",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "capsicum",
+    "qtyPerServing": 30
+   },
+   {
+    "id": "potato",
+    "qtyPerServing": 50
+   },
+   {
+    "id": "butter",
+    "qtyPerServing": 8
+   }
+  ],
+  "staple": false
+ }
+]
