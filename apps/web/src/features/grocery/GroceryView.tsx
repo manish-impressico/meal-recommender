@@ -28,8 +28,8 @@ export function GroceryView() {
   };
   return (
     <div className="d-flex flex-column gap-3" style={{ maxWidth: 640 }}>
-      <PageHeader eyebrow="Planned meals this week" title="Grocery list" action={<Button variant="outline-primary" onClick={copy} disabled={!lines.length}>Copy list</Button>} />
-      {!lines.length ? <div className="mr-card">Generate a week plan first — the list is built from it.</div> : (
+      <PageHeader eyebrow="For this week's plan" title="Grocery list" action={<Button variant="outline-primary" onClick={copy} disabled={!lines.length}>Copy list</Button>} />
+      {!lines.length ? <div className="mr-card">Plan the week first. The list is built from it.</div> : (
         <>
           <div className="mr-card d-flex flex-column gap-2">
             <div className="d-flex justify-content-between"><span className="fw-bold">{done} of {lines.length} items</span><span className="small text-secondary">Merged across the week · {members.length} servings</span></div>

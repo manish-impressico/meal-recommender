@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form';
 import { useRouter } from 'next/navigation';
 import { exportBackup, importBackup, resetAll, run } from '@/data/store';
 import { Loading, PageHeader } from '@/ui';
+import { mealById } from '@/content';
+import { imageEntries } from '@/content/images';
 import { useHousehold } from '../useHousehold';
 
 export function SettingsView() {
@@ -29,12 +31,23 @@ export function SettingsView() {
       <div className="mr-card d-flex flex-column gap-3">
         <div className="fw-bold">Planning</div>
         <Form.Check type="switch" id="ai" label="Use AI to rank and explain picks (off = rule-based picks, no API calls)" checked={s.aiEnabled} onChange={(e) => run({ type: 'updateSettings', patch: { aiEnabled: e.target.checked } })} />
+        <Form.Check type="switch" id="debug" label="Show debug info on meal cards (AI or rule-based pick)" checked={s.showDebug} onChange={(e) => run({ type: 'updateSettings', patch: { showDebug: e.target.checked } })} />
         <Form.Check type="switch" id="norep" label="No repeats within a week" checked={s.noRepeatsInWeek} onChange={(e) => run({ type: 'updateSettings', patch: { noRepeatsInWeek: e.target.checked } })} />
         <Form.Group><Form.Label className="small text-secondary">Max prep time</Form.Label>
           <Form.Select value={s.maxPrepMinutes} onChange={(e) => run({ type: 'updateSettings', patch: { maxPrepMinutes: Number(e.target.value) } })}>{[30, 45, 60].map((m) => <option key={m} value={m}>{m} min</option>)}</Form.Select></Form.Group>
         <Form.Group><Form.Label className="small text-secondary">Week starts on</Form.Label>
           <Form.Select value={s.weekStartsOn} onChange={(e) => run({ type: 'updateSettings', patch: { weekStartsOn: Number(e.target.value) } })}><option value={1}>Monday</option><option value={0}>Sunday</option><option value={6}>Saturday</option></Form.Select></Form.Group>
       </div>
+      {Object.keys(imageEntries).length > 0 && (
+        <details className="mr-card">
+          <summary className="fw-bold">Photo credits</summary>
+          <ul className="small mt-2 mb-0 ps-3">
+            {Object.entries(imageEntries).map(([id, e]) => (
+              <li key={id}>{mealById.get(id)?.name ?? id}: <a href={e.url} target="_blank" rel="noreferrer">{e.credit}</a> ({e.source}, {e.license})</li>
+            ))}
+          </ul>
+        </details>
+      )}
       <div className="mr-card d-flex align-items-center justify-content-between gap-2">
         <div><div className="fw-bold text-danger">Clear all data</div><div className="small text-secondary">Removes members, plans and feedback from this browser.</div></div>
         <Button variant="outline-danger" onClick={() => { if (confirm('Clear everything?')) { resetAll(); router.replace('/onboarding'); } }}>Clear</Button>

@@ -4,12 +4,13 @@ import { useRouter } from 'next/navigation';
 import { nanoid } from 'nanoid';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import type { Member } from '@meal/core';
+import { agree, type Member } from '@meal/core';
 import { run, useAppData } from '@/data/store';
 import { Chip, Loading, PageHeader } from '@/ui';
 import { MemberAvatar, TasteChipEditor, explicitTastes } from '@/components';
 
-const COLORS = ['#1f7a4d', '#5b6b61', '#7a4a00', '#8c1d18', '#2f5d8a', '#6b4c9a'];
+// Distinct in lightness as well as hue, so members are told apart without relying on colour alone.
+const COLORS = ['#2F6FD0', '#B4235A', '#2F7D4F', '#B45309', '#6B4C9A', '#2F8F83'];
 
 export function OnboardingView() {
   const data = useAppData();
@@ -29,10 +30,10 @@ export function OnboardingView() {
 
   return (
     <div style={{ maxWidth: 560, margin: '0 auto' }}>
-      <PageHeader eyebrow={`Step ${step} of 3`} title={step === 1 ? 'Who eats at home?' : step === 2 ? `What does ${current?.name ?? ''} eat?` : 'All set'} />
+      <PageHeader eyebrow={`Step ${step} of 3`} title={step === 1 ? 'Who eats at home?' : step === 2 ? `What ${agree([current?.name ?? ''], 'does', 'do')} ${/^you$/i.test(current?.name ?? '') ? 'you' : current?.name ?? ''} eat?` : 'All set'} />
       {step === 1 && (
         <div className="mr-card d-flex flex-column gap-2">
-          <div className="small text-secondary">House rule: vegetarian + eggs. Edit names, clear one to remove.</div>
+          <div className="small text-secondary">Everyone eats vegetarian + eggs. Edit names, or clear one to remove it.</div>
           {names.map((n, i) => (
             <Form.Control key={i} aria-label={`Member ${i + 1}`} value={n} onChange={(e) => setNames(names.map((x, j) => (j === i ? e.target.value : x)))} />
           ))}
