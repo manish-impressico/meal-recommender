@@ -74,6 +74,7 @@ export const HouseholdSettings = z.object({
   aiEnabled: z.boolean().default(true),
   noRepeatsInWeek: z.boolean().default(true),
   onboarded: z.boolean().default(false),
+  showDebug: z.boolean().default(false), // shows AI/rules source on cards; off for end users
 });
 export type HouseholdSettings = z.infer<typeof HouseholdSettings>;
 

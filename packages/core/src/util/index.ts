@@ -34,3 +34,14 @@ export const err = <E>(error: E): Result<never, E> => ({ ok: false, error });
 /** Deterministic sort: score desc, then id asc — "why this one?" always has one answer. */
 export const byScoreThenId = <T extends { score: number; id: string }>(a: T, b: T) =>
   b.score - a.score || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0);
+
+/** "A", "A and B", "A, B and C" — shared by engine reasons and UI sentences (one grammar rule, one place). */
+export function listNames(names: string[]): string {
+  if (names.length <= 1) return names[0] ?? '';
+  return `${names.slice(0, -1).join(', ')} and ${names.at(-1)}`;
+}
+
+/** Verb agreement: plural for several people or for "You" ("You like it", "Wife likes it"). */
+export function agree(names: string[], singular: string, plural: string): string {
+  return names.length > 1 || names[0]?.toLowerCase() === 'you' ? plural : singular;
+}

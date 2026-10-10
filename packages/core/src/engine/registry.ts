@@ -2,7 +2,7 @@
 // Adding behaviour = adding one object to an array; the pipeline never changes.
 import type { Meal, Member, PlanEntry, Slot } from '../schema';
 import { memberAffinity, type TasteProfile } from '../learning';
-import { daysBetween } from '../util';
+import { agree, daysBetween, listNames } from '../util';
 import type { Vocabulary } from '../vocab';
 
 export const defaultEngineConfig = {
@@ -88,7 +88,7 @@ export const scorers: Scorer[] = [
     explain: (m, c) => {
       const { per } = householdTaste(m, c);
       const fans = per.filter((p) => p.a >= 0.3).map((p) => c.members.find((x) => x.id === p.id)!.name);
-      if (fans.length) return fans.length === 1 ? `${fans[0]} likes it` : `${fans.slice(0, -1).join(', ')} and ${fans.at(-1)} like it`;
+      if (fans.length) return `${listNames(fans)} ${agree(fans, 'likes', 'like')} it`;
       if (per.length && per.every((p) => p.a > -0.3)) return 'Nobody vetoes it';
       return undefined;
     },

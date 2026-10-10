@@ -108,3 +108,13 @@ export function verdict(a: number, cfg = defaultLearningConfig.verdict): Verdict
 // DTO round-trip: profiles are computed on the client and sent derived to the server.
 export const toDto = (p: TasteProfile): TasteProfileDto => ({ affinity: Object.fromEntries(p.affinity), disliked: [...p.disliked] });
 export const fromDto = (d: TasteProfileDto): TasteProfile => ({ affinity: new Map(Object.entries(d.affinity)), disliked: new Set(d.disliked) });
+
+export type VerdictSummary = { likes: Member[]; okay: Member[]; dislikes: Member[]; everyoneHappy: boolean };
+
+/** Domain rule for "who's happy with this meal". Presentation wording lives in the web layer. */
+export function summarizeVerdicts(verdicts: Record<string, Verdict>, members: Member[]): VerdictSummary {
+  const out: VerdictSummary = { likes: [], okay: [], dislikes: [], everyoneHappy: false };
+  for (const m of members.filter((x) => x.active)) out[verdicts[m.id] ?? 'okay'].push(m);
+  out.everyoneHappy = out.dislikes.length === 0 && out.likes.length >= 2;
+  return out;
+}
