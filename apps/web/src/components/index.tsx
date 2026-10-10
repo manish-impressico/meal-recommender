@@ -1,9 +1,11 @@
 'use client';
 // Domain-aware shared components (design §9.2): used across features, never feature-specific.
-import type { Meal, Member, Suggestion } from '@meal/core';
+import { summarizeVerdicts, type Meal, type Member, type Suggestion } from '@meal/core';
 import type { ReactNode } from 'react';
 import { Badge, Chip, ChipGroup, type ChipState } from '@/ui';
 import { vocab } from '@/content';
+import { MealImage } from './MealImage';
+import { verdictSentence } from './verdictText';
 
 const SPICE = ['Mild', 'Mild', 'Medium', 'Hot'];
 
@@ -12,37 +14,61 @@ export function MemberAvatar({ m }: { m: Member }) {
 }
 
 export function MealMeta({ meal }: { meal: Meal }) {
-  return <div className="small text-secondary">{meal.minutes} min · ~{meal.kcal} kcal · {SPICE[meal.spice]}</div>;
+  return <div className="small text-secondary" style={{ fontWeight: 600 }}>{meal.minutes} min · {SPICE[meal.spice].toLowerCase()} spice · ~{meal.kcal} kcal</div>;
 }
 
-const VERDICT_TEXT = { likes: 'likes it', okay: 'okay', dislikes: "won't like it" } as const;
-export function VerdictChips({ s, members }: { s: Suggestion; members: Member[] }) {
+export function VerdictSummary({ s, members }: { s: Suggestion; members: Member[] }) {
+  const sum = summarizeVerdicts(s.verdicts, members);
+  const line = verdictSentence(sum);
+  const ordered = [...sum.likes, ...sum.okay, ...sum.dislikes];
   return (
-    <div className="d-grid gap-2" style={{ gridTemplateColumns: 'repeat(2, minmax(0,1fr))' }}>
-      {members.filter((m) => m.active).map((m) => {
-        const v = s.verdicts[m.id] ?? 'okay';
-        return <span key={m.id} className={`mr-pill ${v}`}><MemberAvatar m={m} />{m.name}: {VERDICT_TEXT[v]}</span>;
-      })}
+    <div className="d-flex align-items-center gap-2" style={{ padding: '10px 12px', borderRadius: 14, background: 'var(--mr-soft)' }}>
+      <div className="mr-avatars">{ordered.map((m) => <MemberAvatar key={m.id} m={m} />)}</div>
+      <div className="d-flex flex-column" style={{ minWidth: 0, fontSize: 13, fontWeight: 600, lineHeight: 1.3 }}>
+        <span>{line.text}</span>
+        {line.warn && <span style={{ color: 'var(--mr-danger)', fontWeight: 700 }}>{line.warn}</span>}
+      </div>
     </div>
   );
 }
 
 /** One meal card, three placements: hero (Today), compact (Week), option (Swap). */
-export function MealCard({ meal, eyebrow, variant, suggestion, members, source, actions }: {
-  meal: Meal; eyebrow: string; variant: 'hero' | 'compact' | 'option'; suggestion?: Suggestion; members?: Member[]; source?: 'ai' | 'rules' | 'manual'; actions?: ReactNode;
+export function MealCard({ meal, eyebrow, variant, suggestion, members, source, actions, showSource = false, badge }: {
+  meal: Meal; eyebrow: string; variant: 'hero' | 'compact' | 'option'; suggestion?: Suggestion; members?: Member[];
+  source?: 'ai' | 'rules' | 'manual'; actions?: ReactNode; showSource?: boolean; badge?: ReactNode;
 }) {
+  // Source is debug info only (Settings › Show debug info); always kept as a data attribute for tests.
+  const debug = showSource && source ? <Badge>{source === 'ai' ? 'AI ranked' : source === 'rules' ? 'Rule-based' : 'Manual'}</Badge> : null;
+  if (variant === 'hero') {
+    return (
+      <section className="mr-hero" data-source={source}>
+        <div style={{ position: 'relative' }}>
+          <MealImage meal={meal} height={200} />
+          {badge && <div style={{ position: 'absolute', top: 12, left: 12 }}>{badge}</div>}
+        </div>
+        <div className="mr-hero-body">
+          <div className="d-flex justify-content-between align-items-center gap-2"><span className="mr-eyebrow">{eyebrow}</span>{debug}</div>
+          <h2 className="m-0" style={{ fontSize: 24 }}>{meal.name}</h2>
+          <MealMeta meal={meal} />
+          {suggestion?.reason && <p className="m-0">{suggestion.reason}</p>}
+          {suggestion && members && <VerdictSummary s={suggestion} members={members} />}
+          {actions && <div className="d-flex gap-2 align-items-center">{actions}</div>}
+        </div>
+      </section>
+    );
+  }
+  const thumb = variant === 'compact' ? 72 : 56;
   return (
-    <section className="mr-card d-flex flex-column gap-1" style={variant === 'hero' ? undefined : { borderRadius: 16, padding: 14 }}>
-      <div className="d-flex align-items-center justify-content-between gap-2">
-        <span className="mr-eyebrow">{eyebrow}</span>
-        {source === 'rules' && variant !== 'option' && <Badge>Rule-based pick</Badge>}
-        {source === 'ai' && variant === 'hero' && <Badge tone="ok">AI ranked</Badge>}
+    <section className="d-flex align-items-center gap-3 mr-card" style={{ padding: 12, borderRadius: 20 }} data-source={source}>
+      <MealImage meal={meal} height={thumb} width={thumb} rounded={14} />
+      <div className="flex-fill d-flex flex-column" style={{ minWidth: 0 }}>
+        <span className="mr-eyebrow text-capitalize">{eyebrow}</span>
+        <span className="fw-bold" style={{ fontSize: 16, lineHeight: 1.25 }}>{meal.name}</span>
+        <MealMeta meal={meal} />
+        {variant === 'option' && suggestion?.reason && <span className="small text-secondary">{suggestion.reason}</span>}
+        {debug && <span>{debug}</span>}
       </div>
-      <h2 className={variant === 'hero' ? 'fs-4 fw-bold m-0' : 'fs-6 fw-bold m-0'}>{meal.name}</h2>
-      <MealMeta meal={meal} />
-      {suggestion?.reason && <div className={variant === 'hero' ? 'mt-1' : 'small text-secondary'}>{suggestion.reason}</div>}
-      {variant === 'hero' && suggestion && members && <div className="mt-2"><VerdictChips s={suggestion} members={members} /></div>}
-      {actions && <div className="d-flex gap-2 mt-2">{actions}</div>}
+      {actions}
     </section>
   );
 }

@@ -1,15 +1,17 @@
 'use client';
 // Domain-free primitives (design §9.2). The only place that imports react-bootstrap — a design-system swap stays local.
+import Dropdown from 'react-bootstrap/Dropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Spinner from 'react-bootstrap/Spinner';
 import type { ReactNode } from 'react';
+import { IconChevronDown } from './icons';
 
 export function PageHeader({ eyebrow, title, action }: { eyebrow: string; title: string; action?: ReactNode }) {
   return (
     <header className="d-flex align-items-center justify-content-between gap-3 pt-3 pb-2">
       <div>
         <div className="mr-eyebrow">{eyebrow}</div>
-        <h1 className="m-0 fs-4 fw-bold">{title}</h1>
+        <h1 className="m-0 fw-bold" style={{ fontSize: 26, lineHeight: 1.15 }}>{title}</h1>
       </div>
       {action}
     </header>
@@ -61,4 +63,21 @@ export function Loading({ text = 'Loading…' }: { text?: string }) {
 
 export function Badge({ tone, children }: { tone?: 'ok' | 'warn'; children: ReactNode }) {
   return <span className={`mr-badge ${tone ?? ''}`}>{children}</span>;
+}
+
+/** Compact single-select menu ("Dinner ▾"). Replaces rows of chips where only one value matters. */
+export function SlotPicker<T extends string>({ value, options, onChange, label = 'Meal' }: {
+  value: T; options: { id: T; label: string }[]; onChange: (v: T) => void; label?: string;
+}) {
+  const current = options.find((o) => o.id === value)?.label ?? value;
+  return (
+    <Dropdown align="end" onSelect={(k) => k && onChange(k as T)}>
+      <Dropdown.Toggle as="button" type="button" className="mr-chip d-inline-flex align-items-center gap-2" aria-label={`${label}: ${current}`} bsPrefix="mr-noarrow">
+        {current}<IconChevronDown size={16} aria-hidden="true" />
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        {options.map((o) => <Dropdown.Item key={o.id} eventKey={o.id} active={o.id === value}>{o.label}</Dropdown.Item>)}
+      </Dropdown.Menu>
+    </Dropdown>
+  );
 }
