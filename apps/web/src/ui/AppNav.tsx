@@ -1,14 +1,15 @@
 'use client';
-// AppShell nav: bottom bar on phones, top bar ≥ lg (one component, breakpoint-parameterized via CSS).
+// Bottom bar on phones, top bar ≥ lg (one component, breakpoint handled in CSS).
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { IconFamily, IconGrocery, IconSettings, IconToday, IconWeek } from './icons';
 
 const TABS = [
-  { href: '/', label: 'Today' },
-  { href: '/week', label: 'Week' },
-  { href: '/grocery', label: 'Grocery' },
-  { href: '/family', label: 'Family' },
-  { href: '/settings', label: 'Settings' },
+  { href: '/', label: 'Today', Icon: IconToday },
+  { href: '/week', label: 'Week', Icon: IconWeek },
+  { href: '/grocery', label: 'Grocery', Icon: IconGrocery },
+  { href: '/family', label: 'Family', Icon: IconFamily },
+  { href: '/settings', label: 'Settings', Icon: IconSettings },
 ];
 
 export function AppNav() {
@@ -16,9 +17,9 @@ export function AppNav() {
   if (path.startsWith('/onboarding')) return null;
   return (
     <nav className="mr-nav" aria-label="Primary">
-      {TABS.map((t) => (
-        <Link key={t.href} href={t.href} className={path === t.href ? 'active' : ''} aria-current={path === t.href ? 'page' : undefined}>
-          {t.label}
+      {TABS.map(({ href, label, Icon }) => (
+        <Link key={href} href={href} className={path === href ? 'active' : ''} aria-current={path === href ? 'page' : undefined}>
+          <Icon size={22} strokeWidth={path === href ? 2.4 : 2} aria-hidden="true" />{label}
         </Link>
       ))}
     </nav>
