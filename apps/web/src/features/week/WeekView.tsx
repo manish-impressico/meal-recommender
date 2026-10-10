@@ -5,8 +5,9 @@ import { planKey, planWeekTargets, swapTarget, toISODate, weekDates, weekStart, 
 import { run } from '@/data/store';
 import { getRecommendations } from '@/services/recommendClient';
 import { mealById } from '@/content';
-import { BottomSheet, Chip, Loading, PageHeader } from '@/ui';
-import { MealCard, MealMeta } from '@/components';
+import { BottomSheet, Loading, PageHeader } from '@/ui';
+import { IconCheck } from '@/ui/icons';
+import { MealCard } from '@/components';
 import { useHousehold } from '../useHousehold';
 
 const fmt = (iso: string, o: Intl.DateTimeFormatOptions) => new Date(iso + 'T00:00:00').toLocaleDateString('en-IN', o);
@@ -40,20 +41,24 @@ export function WeekView() {
 
   const dayEntries = data.settings.enabledSlots.map((s) => ({ s, e: data.plan[planKey(day, s)] }));
   return (
-    <div className="d-flex flex-column gap-3">
+    <div className="d-flex flex-column gap-3" style={{ maxWidth: 640 }}>
       <PageHeader eyebrow="This week" title={`${fmt(dates[0], { weekday: 'short', day: 'numeric' })} – ${fmt(dates[6], { weekday: 'short', day: 'numeric', month: 'short' })}`}
-        action={<Button onClick={generate} disabled={busy}>{busy ? 'Planning…' : week.length ? 'Regenerate' : 'Generate week'}</Button>} />
-      <div className="d-flex gap-2 overflow-auto pb-1">
-        {dates.map((d) => <Chip key={d} state={d === day ? 'on' : 'off'} label={fmt(d, { weekday: 'short', day: 'numeric' })} onClick={() => setDay(d)} />)}
+        action={<Button variant={week.length ? 'outline-primary' : 'primary'} onClick={generate} disabled={busy}>{busy ? 'Planning…' : week.length ? 'Plan again' : 'Plan my week'}</Button>} />
+      <div className="mr-daystrip" role="group" aria-label="Day">
+        {dates.map((d) => (
+          <button key={d} type="button" className="mr-day" aria-pressed={d === day} onClick={() => setDay(d)}>
+            {fmt(d, { weekday: 'short' })}<b>{fmt(d, { day: 'numeric' })}</b>
+          </button>
+        ))}
       </div>
       {busy && <Loading text="Planning 7 days, no repeats…" />}
-      {!week.length && !busy && <div className="mr-card">No plan yet. Generate one — every slot respects house rules and nobody’s won’t-eat list wins.</div>}
-      <div className="d-grid gap-3" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))' }}>
+      {!week.length && !busy && <div className="mr-card">No plan yet. Plan the week and every meal will follow your house rules.</div>}
+      <div className="d-flex flex-column gap-2">
         {dayEntries.map(({ s, e }) => {
           const meal = e && mealById.get(e.mealId);
           return meal ? (
-            <MealCard key={s} variant="compact" meal={meal} eyebrow={`${s}${e.status === 'cooked' ? ' · cooked' : ''}`} suggestion={{ mealId: meal.id, score: 0, reason: e.reason ?? '', verdicts: {} }} source={e.source}
-              actions={e.status !== 'cooked' ? <Button variant="outline-primary" size="sm" onClick={() => openSwap(e)}>Swap</Button> : undefined} />
+            <MealCard key={s} variant="compact" meal={meal} eyebrow={`${s}${e.status === 'cooked' ? ' · cooked' : ''}`} suggestion={{ mealId: meal.id, score: 0, reason: e.reason ?? '', verdicts: {} }} source={e.source} showSource={data.settings.showDebug}
+              actions={e.status !== 'cooked' ? <Button variant="outline-secondary" onClick={() => openSwap(e)}>Swap</Button> : <IconCheck size={22} color="var(--mr-primary)" aria-label="Cooked" />} />
           ) : null;
         })}
       </div>
@@ -62,10 +67,8 @@ export function WeekView() {
         {[swap?.result?.pick, ...(swap?.result?.backups ?? [])].filter(Boolean).map((s) => {
           const m = mealById.get(s!.mealId)!;
           return (
-            <div key={m.id} className="mr-list"><div className="mr-row">
-              <div><div className="fw-bold">{m.name}</div><MealMeta meal={m} /><div className="small text-secondary">{s!.reason}</div></div>
-              <Button variant="outline-primary" onClick={() => { run({ type: 'swap', date: swap!.entry.date, slot: swap!.entry.slot, fromMealId: swap!.entry.mealId, toMealId: m.id, reason: s!.reason, source: 'manual' }); setSwap(null); }}>Use this</Button>
-            </div></div>
+            <MealCard key={m.id} variant="option" meal={m} eyebrow={swap!.entry.slot} suggestion={s!}
+              actions={<Button size="sm" onClick={() => { run({ type: 'swap', date: swap!.entry.date, slot: swap!.entry.slot, fromMealId: swap!.entry.mealId, toMealId: m.id, reason: s!.reason, source: 'manual' }); setSwap(null); }}>Use this</Button>} />
           );
         })}
       </BottomSheet>

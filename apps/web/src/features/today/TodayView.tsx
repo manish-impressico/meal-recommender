@@ -1,15 +1,17 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import { planKey, toISODate, type RejectReason, type SlotResult, type Slot } from '@meal/core';
+import { planKey, summarizeVerdicts, toISODate, type RejectReason, type SlotResult, type Slot } from '@meal/core';
 import { run } from '@/data/store';
 import { getRecommendations } from '@/services/recommendClient';
 import { mealById, vocab } from '@/content';
-import { BottomSheet, Chip, ChipGroup, Loading, PageHeader, Badge } from '@/ui';
+import { BottomSheet, Chip, ChipGroup, Loading, PageHeader, SlotPicker } from '@/ui';
+import { IconClock, IconHome } from '@/ui/icons';
 import { MealCard, MemberAvatar } from '@/components';
 import { useHousehold } from '../useHousehold';
 
 const SLOT_LABEL: Record<Slot, string> = { breakfast: 'Breakfast', lunch: 'Lunch', snack: 'Snack', dinner: 'Dinner' };
+const TITLE: Record<Slot, string> = { breakfast: "Today's breakfast", lunch: "Today's lunch", snack: "Today's snack", dinner: "Tonight's pick" };
 const REASONS: { id: RejectReason; label: string }[] = [
   { id: 'recent', label: 'Had it recently' }, { id: 'heavy', label: 'Too heavy' }, { id: 'no-time', label: 'No time tonight' }, { id: 'missing-ingredient', label: 'Missing an ingredient' },
 ];
@@ -61,23 +63,28 @@ export function TodayView() {
 
   return (
     <div className="d-flex flex-column gap-3" style={{ maxWidth: 640 }}>
-      <PageHeader eyebrow="Today" title={new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short' })} />
-      <div className="d-flex gap-2">
-        {data.settings.enabledSlots.map((s) => <div key={s} className="flex-fill d-grid"><Chip state={s === slot ? 'on' : 'off'} label={SLOT_LABEL[s]} onClick={() => { setSlot(s); setExclude([]); }} /></div>)}
-      </div>
-      <div className="d-flex gap-2">
-        <div className="flex-fill d-grid"><Chip state={quick ? 'on' : 'off'} label="Quick · 30 min" onClick={() => setQuick(!quick)} /></div>
-        <div className="flex-fill d-grid"><Chip state={data.pantry.length ? 'on' : 'off'} label={`At home · ${data.pantry.length} items`} onClick={() => { setPantryDraft(data.pantry); setSheet('pantry'); }} /></div>
+      <PageHeader
+        eyebrow={`${new Date().toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' })} · ${SLOT_LABEL[slot]}`}
+        title={TITLE[slot]}
+        action={<SlotPicker value={slot} options={data.settings.enabledSlots.map((s) => ({ id: s, label: SLOT_LABEL[s] }))} onChange={(s) => { setSlot(s); setExclude([]); }} />}
+      />
+      <div className="d-flex gap-2 flex-wrap">
+        <Chip state={quick ? 'on' : 'off'} onClick={() => setQuick(!quick)} label={<span className="d-inline-flex align-items-center gap-2"><IconClock size={16} aria-hidden="true" />Under 30 min</span>} />
+        <Chip state={data.pantry.length ? 'on' : 'off'} onClick={() => { setPantryDraft(data.pantry); setSheet('pantry'); }}
+          label={<span className="d-inline-flex align-items-center gap-2"><IconHome size={16} aria-hidden="true" />{data.pantry.length ? `At home · ${data.pantry.length}` : "Use what's at home"}</span>} />
       </div>
 
       {loading && !current && <Loading text="Finding a meal everyone will eat…" />}
       {planned?.status === 'cooked' && meal ? (
-        <MealCard variant="hero" meal={meal} eyebrow={`${SLOT_LABEL[slot]} · cooked`} suggestion={{ mealId: meal.id, score: 0, reason: planned.reason ?? '', verdicts: {} }} actions={<Badge tone="ok">Cooked — enjoy!</Badge>} />
+        <MealCard variant="hero" meal={meal} eyebrow={`${SLOT_LABEL[slot]} · cooked`} suggestion={{ mealId: meal.id, score: 0, reason: planned.reason ?? '', verdicts: {} }}
+          badge={<span className="mr-badge ok">Cooked</span>} actions={<span className="small text-secondary">Enjoy! Plan ahead from the Week tab.</span>} />
       ) : result?.noEligible ? (
-        <div className="mr-card">Nothing fits these filters. Try turning off “Quick”.</div>
+        <div className="mr-card">Nothing fits these filters. Try turning off “Under 30 min”.</div>
       ) : meal && current ? (
         <MealCard
           variant="hero" meal={meal} eyebrow={`${SLOT_LABEL[slot]} ${slot === 'dinner' ? 'tonight' : 'today'}`} suggestion={current} members={members} source={result!.source}
+          showSource={data.settings.showDebug}
+          badge={summarizeVerdicts(current.verdicts, members).everyoneHappy ? <span className="mr-badge highlight">Everyone&apos;s happy</span> : undefined}
           actions={<>
             <Button variant="outline-secondary" size="lg" className="flex-fill" onClick={() => setSheet('not')}>Not this</Button>
             <Button size="lg" className="flex-fill" style={{ flexGrow: 2 }} onClick={cook}>Cook this</Button>
@@ -87,14 +94,12 @@ export function TodayView() {
 
       {otherSlots.length > 0 && (
         <section className="d-flex flex-column gap-2">
-          <div className="mr-eyebrow px-1">Also today</div>
-          <div className="mr-list">
-            {otherSlots.map(({ s, e }) => (
-              <div key={s} className="mr-row">
-                <div><div className="small text-secondary">{SLOT_LABEL[s]}</div><div className="fw-bold">{mealById.get(e!.mealId)?.name}</div></div>
-                <Badge tone={e!.status === 'cooked' ? 'ok' : undefined}>{e!.status === 'cooked' ? 'Cooked' : 'Planned'}</Badge>
-              </div>
-            ))}
+          <h3 className="m-0" style={{ fontSize: 16 }}>Also today</h3>
+          <div className="d-flex flex-column gap-2">
+            {otherSlots.map(({ s, e }) => {
+              const m = mealById.get(e!.mealId);
+              return m ? <MealCard key={s} variant="compact" meal={m} eyebrow={`${SLOT_LABEL[s]} · ${e!.status}`} source={e!.source} showSource={data.settings.showDebug} /> : null;
+            })}
           </div>
         </section>
       )}
